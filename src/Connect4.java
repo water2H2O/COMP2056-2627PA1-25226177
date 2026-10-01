@@ -130,6 +130,11 @@ public class Connect4 {
      */
     void restart(int[][] board) {
         //TODO
+        for (int r=0;r<board.length;r++){
+            for (int c=0; c<board[r].length;c++){
+                board[r][c] = 0;
+            }
+        }
 
     }
 
@@ -144,6 +149,13 @@ public class Connect4 {
      */
     void changeSymbol(int player, char[] symbols) {
         //TODO
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a new Symbol you like: ");
+        symbols[player-1] = input.next().charAt(0);
+
+        //跳过下一个玩家一回合
+        if (player == 1) player = 2;
+        else player = 1;
     }
 
     /**
@@ -159,6 +171,7 @@ public class Connect4 {
      */
     boolean check(int player, int[][] board) {
         // TODO
+        return (false);
     }
 
     /**
@@ -176,6 +189,7 @@ public class Connect4 {
      */
     boolean checkMate(int player, int[][] board) {
         // TODO
+        return (false);
     }
 
     /**
@@ -191,6 +205,7 @@ public class Connect4 {
      */
     boolean validate(char input, int[][] board) {
         //TODO
+        return(true);
     }
 
     /**
@@ -205,6 +220,16 @@ public class Connect4 {
      */
     void fillBoard(int[][] board, int column, int player) {
         // TODO
+        if(board[0][column] ==0){
+            for (int i=1;i<board.length;i++){
+                if (board[i][column] != 0){
+                    board[i-1][column] = player;
+                    break;
+                } else if (i == board.length-1) {
+                    board[i-1][column] = player;
+                }
+            }
+        }
     }
 
     /**
@@ -213,28 +238,29 @@ public class Connect4 {
      */
     void printHelpMenu() {
         // TODO
-        boolean FirstTimePrintHM = true;
-        if (FirstTimePrintHM){
-            System.out.println("Welcome to this game! Here is the help menu: ");
-            System.out.println("---------------------------------");
-            System.out.println("Any question? ");
-            System.out.println("Press the \"H/h\" and here is the help menu");
-            System.out.println("How to play?");
-            System.out.println("Press the \"number(From 0 to 7)\" of the corresponding\n column to drop your symbol.");
-            System.out.println("Alternatively, you can enter special characters to achieve more functions.");
-            System.out.println("Don't like your symbol?");
-            System.out.println("Press the \"C/c\" to Change your symbol during your turn.");
-            System.out.println("Misstep?");
-            System.out.println("Press the \"R/r\" to restart, OR...");
-            System.out.println("Press the \"Q/q\" to quit, but PLZ ask your friend...");
-            System.out.println("Have a nice time.");
-        }
-        System.out.println("Help Menu Overview: \n---------------------------------");
-        System.out.printf("%-15s %s%n","\"H/h\"","Open the help menu.");
-        System.out.printf("%-15s %s%n","\"C/c\"","Change your symbol during your turn.");
-        System.out.printf("%-15s %s%n","\"R/r\"","Restart the game board.");
-        System.out.printf("%-15s %s%n","\"Q/q\"","Quit from the game.");
-        System.out.printf("%-15s %s%n","\"Number(From 0 to 7)\"","Drop your symbol into the corresponding column.");
+        //boolean FirstTimePrintHM = true;
+        //if (FirstTimePrintHM){
+        System.out.println("Welcome to this game! Here is the help menu: ");
+        System.out.println("----------------------------------------------");
+        System.out.println("Any question? ");
+        System.out.println("Press the \"H/h\" and here is the help menu");
+        System.out.println("How to play?");
+        System.out.println("Press the \"number(From 0 to 7)\" of the corresponding\n column to drop your symbol.");
+        System.out.println("Alternatively, you can enter special characters to achieve more functions.");
+        System.out.println("Don't like your symbol?");
+        System.out.println("Press the \"C/c\" to Change your symbol during your turn.");
+        System.out.println("Misstep?");
+        System.out.println("Press the \"R/r\" to restart, OR...");
+        System.out.println("Press the \"Q/q\" to quit, but PLZ ask your friend...");
+        System.out.println("Have a nice time.");
+        //    FirstTimePrintHM = false;
+        //}
+        System.out.println("Help Menu Overview: \n----------------------------------------------");
+        System.out.printf("%-25s %s%n","\"H/h\"","Open the help menu.");
+        System.out.printf("%-25s %s%n","\"C/c\"","Change your symbol during your turn.");
+        System.out.printf("%-25s %s%n","\"R/r\"","Restart the game board.");
+        System.out.printf("%-25s %s%n","\"Q/q\"","Quit from the game.");
+        System.out.printf("%-25s %s%n","\"Number(From 0 to 7)\"","Drop your symbol into the corresponding column.");
     }
 
     /**
@@ -246,6 +272,7 @@ public class Connect4 {
      */
     boolean isGameOver(int[][] board) {
         // TODO
+        return(false);
     }
 
     /**
@@ -260,6 +287,25 @@ public class Connect4 {
      */
     void printBoard(int[][] board, char[] symbols) {
         // TODO
+        System.out.println("|0|1|2|3|4|5|6|7|");
+        System.out.println("------------------");
+        for (int r=0; r<board.length; r++){
+            for (int c:board[r]){
+                switch (c){
+                    case 0:
+                        System.out.print("|"+" ");
+                        break;
+                    case 1:
+                        System.out.print("|"+symbols[0]);
+                        break;
+                    case 2:
+                        System.out.print("|"+symbols[1]);
+                        break;
+                }
+            }
+            System.out.println("|");
+        }
+        System.out.println("------------------");
     }
 
 }
