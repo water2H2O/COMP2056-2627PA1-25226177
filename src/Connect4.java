@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /**
- * @author: ______Tang Yachun(25226177)_________
+ * @author: ______git版本我还不是很想开盒自己，虽然readme已经能看出很多了_________
  *
  *          For the instruction of the assignment please refer to the assignment
  *          GitHub.
